@@ -7,7 +7,7 @@ license = "MIT OR Apache-2.0"
 description = "A tool to run git push easily"
 readme = "README.md"
 homepage = ""
-keywords = [ "cli", "git push" ]
+keywords = [ "cli", "git", "push" ]
 categories = ["command-line"]
 
 
