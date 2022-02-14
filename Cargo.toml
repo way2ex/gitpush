@@ -2,6 +2,14 @@
 name = "gitpush"
 version = "0.0.1"
 edition = "2021"
+authors = [ "Justin Zhu <vac872089248@gmail.com>" ]
+license = "MIT OR Apache-2.0"
+description = "A tool to run git push easily"
+readme = "README.md"
+homepage = ""
+keywords = [ "cli", "git push" ]
+categories = ["command-line"]
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
