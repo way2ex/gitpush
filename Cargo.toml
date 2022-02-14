@@ -6,7 +6,7 @@ authors = [ "Justin Zhu <vac872089248@gmail.com>" ]
 license = "MIT OR Apache-2.0"
 description = "A tool to run git push easily"
 readme = "README.md"
-homepage = ""
+homepage = "http://zhuqingguang.github.io"
 keywords = [ "cli", "git", "push" ]
 categories = ["command-line"]
 
