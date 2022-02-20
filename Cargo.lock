@@ -191,6 +191,7 @@ dependencies = [
  "env_logger",
  "log",
  "predicates",
+ "regex",
 ]
 
 [[package]]
