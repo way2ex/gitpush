@@ -1,31 +1,24 @@
-use assert_cmd::prelude::*; // Add methods on commands
-use predicates::prelude::*; // Used for writing assertions
-use std::process::Command; // run programs
-use assert_fs::prelude::*;
-
+use gitpush::find_gitpush_command;
 
 #[test]
-fn find_content_in_file() -> Result<(), Box<dyn std::error::Error>> {
-    let file = assert_fs::NamedTempFile::new("sample.txt")?;
-    file.write_str("A test\nActual content\nMore content\nAnother test")?;
+fn test_find_gitpush_command() {
+    let git_string = "\
+fatal: The current branch fix/author has no upstream branch.
+To push the current branch and set the remote as upstream, use
 
-    let mut cmd = Command::cargo_bin("grrs")?;
-    cmd.arg("test").arg(file.path());
-    cmd.assert()
-        .success()
-        .stdout(predicate::str::contains("test\nAnother test"));
-    
-    Ok(())
+    git push --set-upstream origin fix/author
+
+";
+    let ma = find_gitpush_command(git_string).unwrap();
+    assert_eq!(ma, "git push --set-upstream origin fix/author");
 }
 
 #[test]
-fn file_doesnt_exist() -> Result<(), Box<dyn std::error::Error>> {
-    let mut cmd = Command::cargo_bin("grrs")?;
-
-    cmd.arg("foobar").arg("test/file/doesnt/exist");
-    cmd.assert()
-        .failure()
-        .stderr(predicate::str::contains("could not read file"));
-
-    Ok(())
+fn failed_find_gitpush_command() {
+    let git_string = "\
+fatal: The current branch fix/author has no upstream branch.
+To push the current branch and set the remote as upstream, use
+";
+    let ma = find_gitpush_command(git_string).unwrap_or("");
+    assert_eq!(ma, "");
 }
