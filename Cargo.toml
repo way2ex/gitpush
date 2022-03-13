@@ -1,6 +1,6 @@
 [package]
 name = "gitpush"
-version = "0.0.2"
+version = "0.0.3"
 edition = "2021"
 authors = [ "Justin Zhu <vac872089248@gmail.com>" ]
 license = "MIT OR Apache-2.0"
